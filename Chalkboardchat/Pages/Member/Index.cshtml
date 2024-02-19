@@ -1,0 +1,75 @@
+﻿@page
+@* Detta definierar modellen som används på sidan. Chalkboardchat.Pages.Member.IndexModel är en C# klass som innehåller data och metoder som används av sidan.
+ *@
+
+@model Chalkboardchat.Pages.Member.IndexModel
+@{
+}
+
+<h1>Member</h1>
+
+<h1>Messageboard</h1>
+
+<div>
+    @*     Detta är en div element som innehåller en foreach loop. Loopen går igenom varje meddelande i Model.Messages i fallande ordning baserat på datumet för meddelandet
+    *@@foreach (var message in Model.Messages.OrderByDescending(m => m.Date))
+    {
+        <div style="background-color: @(message.Username == User.Identity.Name ? "lightpink" : "transparent")">
+            <strong>@message.Username:</strong> @message.Message
+            <br />
+            <span>Posted on: @message.Date.ToString("yyyy-MM-dd HH:mm:ss")</span>
+        </div>
+    }
+</div>
+
+<form method="post">
+    <div>
+        <label for="message">Message:</label>
+        <input type="text" id="message" name="message" />
+    </div>
+    <button type="submit">Send Message</button>
+</form>
+
+<form method="get" action="/Login">
+    <button type="submit">Logga in</button>
+</form>
+
+<form method="get" asp-page="/Member/Details">
+    <button type="submit">Go to Details</button>
+</form>
+
+
+@* @page
+@model Chalkboardchat.Pages.Member.IndexModel
+@{
+}
+
+
+<h1>Member</h1>
+
+<h1>Messageboard</h1>
+
+<div>
+    @foreach (var message in Model.Messages)
+    {
+        <div>
+            <strong>@message.Username:</strong> @message.Message
+        </div>
+    }
+</div>
+
+<form method="post">
+    <div>
+        <label for="message">Message:</label>
+        <input type="text" id="message" name="message" />
+    </div>
+    <button type="submit">Send Message</button>
+</form>
+
+<form method="get" action="/Login">
+    <button type="submit">Logga in</button>
+</form>
+
+<form method="get" asp-page="/Member/Details">
+    <button type="submit">Go to Details</button>
+</form> *@

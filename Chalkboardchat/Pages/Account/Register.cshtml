@@ -1,0 +1,18 @@
+﻿@page
+@model Chalkboardchat.Pages.Account.RegisterModel
+@{
+}
+
+@* använder post för att vi ska skicka info, asp for för att binda properties
+ *@<form method="post">
+    <input type="text" placeholder="Username" asp-for="Username" />
+    <input type="password" placeholder="Password" asp-for="Password" />
+    <input type="submit" value="Register" />
+
+
+</form>
+
+
+<form method="get" action="/Account/Login">
+    <button type="submit">Logga in</button>
+</form>
